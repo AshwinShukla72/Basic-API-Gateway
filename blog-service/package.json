@@ -1,8 +1,13 @@
 {
   "name": "blog-service",
-  "scripts": {
-    "dev": "PORT=3001 bun run --hot src/index.ts"
+  "author": {
+    "email": "ashwin72shukla@gmail.com",
+    "name": "Ashwin Shukla"
   },
+  "scripts": {
+    "dev": "bun run --hot src/index.ts"
+  },
+  "module": "src/index.ts",
   "dependencies": {
     "@faker-js/faker": "^8.4.1",
     "@types/uuid": "^10.0.0",
