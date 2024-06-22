@@ -1,0 +1,16 @@
+{
+  "name": "blog-service",
+  "scripts": {
+    "dev": "PORT=3001 bun run --hot src/index.ts"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^8.4.1",
+    "@types/uuid": "^10.0.0",
+    "hono": "^4.4.7",
+    "nanoid": "^5.0.7",
+    "uuid": "^10.0.0"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  }
+}
