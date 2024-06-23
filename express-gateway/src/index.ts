@@ -3,6 +3,7 @@ import { createProxyMiddleware } from 'http-proxy-middleware'
 import { logger } from "./utils/logger"
 import type { Express, Request, Response, NextFunction } from "express"
 import helmet from "helmet"
+import { defaultRateLimiter } from "./utils/ratelimiter"
 // Imports ⬆️
 const app: Express = express()
 app.use(express.json());
@@ -17,10 +18,10 @@ app.use((req, res, next) => {
   }, "Incoming Request");
   next();
 });
-
+app.use(defaultRateLimiter)
 app.use('/blogs', createProxyMiddleware({
-  target: `http://${Bun.env.BLOG_SERVICE_ENDPOINT}:3001/api/blogs`,
-  changeOrigin: true, // Change the origin header to match the target
+  target: Bun.env.BLOG_SERVICE_ENDPOINT,
+  changeOrigin: false, // Change the origin header to match the target
   pathRewrite: {
     '^/blogs': ''
   }
