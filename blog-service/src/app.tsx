@@ -9,7 +9,7 @@ app.use("*", logger())
 
 
 
-app.get('/blogs', async (c) => {
+app.get('/blogs*', async (c) => {
   try {
     const count = 10
     const blogs = []
