@@ -4,20 +4,25 @@ import { logger } from "./utils/logger"
 import type { Express, Request, Response, NextFunction } from "express"
 import helmet from "helmet"
 import { defaultRateLimiter } from "./utils/ratelimiter"
+import morgan from "morgan"
 // Imports ⬆️
 const app: Express = express()
 app.use(express.json());
 app.use(helmet())
-app.use((req, res, next) => {
-  logger.info({
-    method: req.method,
-    url: req.url,
-    headers: req.headers,
-    query: req.query,
-    body: req.body
-  }, "Incoming Request");
-  next();
-});
+// app.use((req, res, next) => {
+//   logger.info({
+//     method: req.method,
+//     url: req.url,
+//     headers: req.headers,
+//     query: req.query,
+//     body: req.body
+//   }, "Incoming Request");
+//   next();
+// });
+
+// setup the logger
+app.use(morgan('dev'));
+
 app.use(defaultRateLimiter)
 app.use('/blogs', createProxyMiddleware({
   target: Bun.env.BLOG_SERVICE_ENDPOINT,
