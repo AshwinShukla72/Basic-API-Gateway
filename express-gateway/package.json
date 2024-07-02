@@ -5,11 +5,14 @@
     "name": "Ashwin Shukla"
   },
   "scripts": {
-    "dev": "bun run --watch src/index.ts"
+    "dev": "bun run --watch src/index.ts",
+    "format": "bunx @biomejs/biome format --write ./src",
+    "check": "bunx @biomejs/biome check --write ./src"
   },
   "module": "src/index.ts",
   "type": "module",
   "devDependencies": {
+    "@biomejs/biome": "1.8.3",
     "@types/bun": "latest",
     "vitest": "^1.6.0"
   },
