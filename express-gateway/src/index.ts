@@ -9,16 +9,6 @@ import morgan from 'morgan';
 const app: Express = express();
 app.use(express.json());
 app.use(helmet());
-// app.use((req, res, next) => {
-//   logger.info({
-//     method: req.method,
-//     url: req.url,
-//     headers: req.headers,
-//     query: req.query,
-//     body: req.body
-//   }, "Incoming Request");
-//   next();
-// });
 
 // setup the logger
 app.use(morgan('dev'));
