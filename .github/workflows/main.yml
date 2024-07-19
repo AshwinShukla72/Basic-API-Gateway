@@ -21,11 +21,13 @@ jobs:
 
       - name: Install dependencies & format code for express-gateway
         run: |
+          source $GITHUB_ENV
           cd express-gateway
           bun install
           bunx @biomejs/biome check --write ./src
       - name: install dependencies & format code for blog-service
         run: |
+          source $GITHUB_ENV
           cd blog-service
           bun install
           bunx @biomejs/biome check --write ./src  
