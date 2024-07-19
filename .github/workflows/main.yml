@@ -11,6 +11,14 @@ jobs:
     steps:
       - name: checkout code
         uses: actions/checkout@v4
+      # install bun
+      - name: Install bun
+        run: |
+          curl -fsSL https://bun.sh/install | bash
+          echo 'export BUN_INSTALL="$HOME/.bun"' >> $GITHUB_ENV
+          echo 'export PATH="$BUN_INSTALL/bin:$PATH"' >> $GITHUB_ENV
+          source $GITHUB_ENV
+
       - name: Install dependencies & format code for express-gateway
         run: |
           cd express-gateway
